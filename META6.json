@@ -1,0 +1,21 @@
+o        {
+            "perl" : "6.c",
+            "name" : "Augment::Util",
+            "auth" : "github:doomvox",
+            "api" : "1",
+            "version" : "0.0.1",
+            "description" : "Provides a recompose_core method to forcibly re-initialize the built-ins",
+            "authors" : [ "Joseph Brenner" ],
+            "license" : "Artistic-2.0",
+            "provides" : {
+                "Augment::Util" : "lib/Augment/Util.pm6"
+            },
+            "depends" : [ 'Symbol::Scan' ],
+            "build-depends" : [ ],
+            "test-depends" : [ 'Test' ],
+            "resources" : [ ],
+            "tags": [
+                "Augment", "Util", "Recomposer", "recompose_core"
+            ],
+            "source-url" : "git://github.com/doomvox/Augment-Util.git"
+        }
