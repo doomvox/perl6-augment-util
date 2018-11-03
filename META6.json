@@ -10,12 +10,12 @@ o        {
             "provides" : {
                 "Augment::Util" : "lib/Augment/Util.pm6"
             },
-            "depends" : [ 'Symbol::Scan' ],
+            "depends" : [ "Symbol::Scan" ],
             "build-depends" : [ ],
-            "test-depends" : [ 'Test' ],
+            "test-depends" : [ "Test" ],
             "resources" : [ ],
             "tags": [
                 "Augment", "Util", "Recomposer", "recompose_core"
             ],
-            "source-url" : "git://github.com/doomvox/Augment-Util.git"
+            "source-url" : "git://github.com/doomvox/perl6-augment-util.git"
         }
