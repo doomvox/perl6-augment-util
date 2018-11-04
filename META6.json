@@ -17,5 +17,5 @@ o        {
             "tags": [
                 "Augment", "Util", "Recomposer", "recompose_core"
             ],
-            "source-url" : "git://github.com/doomvox/Augment-Util.git"
+            "source-url" : "git://github.com/doomvox/perl6-augment-util.git"
         }
