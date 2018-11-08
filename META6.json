@@ -3,7 +3,7 @@ o        {
             "name" : "Augment::Util",
             "auth" : "github:doomvox",
             "api" : "1",
-            "version" : "0.0.1",
+            "version" : "0.0.3",
             "description" : "Provides a recompose_core method to forcibly re-initialize the built-ins",
             "authors" : [ "Joseph Brenner" ],
             "license" : "Artistic-2.0",

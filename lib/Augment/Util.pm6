@@ -2,8 +2,13 @@
 #                                25 Oct 2018
 
 use Symbol::Scan;
+class Augur {
+    method in_repl {
+        # checking ($*PROGRAM-NAME eq 'interactive') is also good,
+        # but could be confused by a script named 'interactive'
+        return ($?FILE eq '<unknown file>');
+    }
 
-class Recomposer {
     method recompose_core {
         my @type_objects = SymbolScan.list_core_type_objects();
         for @type_objects -> $type_object {
@@ -61,16 +66,20 @@ Augment::Util - utilities to work with the augment feature
        method hiccup {
            say "hic!";
        }
-       Recomposer.recompose_core;
+       Augur.recompose_core;
    }
 
    @array.hiccup; # hic!
 
 =head1 DESCRIPTION
 
-This module makes the C<Recomposer> class available, with the 
-method C<recompose_core> which forcibly runs the ".^compose"
-method on everything defined in CORE.
+This module makes the C<Augur> class available, which provides methods
+useful for working with the perl6 "augment" feature:
+
+=item C<recompose_core> runs the ".^compose" method on everything
+defined in CORE.
+
+=item C<inside_repl>  checks if runnning inside the repl
 
 This covers for a known bug in the use of augment: you can use
 it to add methods to a class, and they *should* be automatically
@@ -82,9 +91,11 @@ force a re-initialization.
 Someday the need for C<recompose_core> will probably go away once
 this bug has been addressed, but for now it's a useable workaround.
 
-Another issue with augment, though is that it's use is strongly
-discouraged because of potential conflicts.  Don't do it unless 
-you know what you're doing, and even then...
+Another issue with augment is that it's use is strongly
+discouraged because it's the kind of thing that works fine once,
+but when it's being used a lot by many people there are potential
+conflicts.  Don't do it unless you know what you're doing, and
+even then...
 
 =head1 MOTIVATION
 
@@ -109,8 +120,8 @@ The Mystery Line does a gist call and does nothing with the response:
 
 Presumbably what's going on is the code for ".gist" is better
 excercised than ".^compose", and does a better job of checking 
-for problems and throwing a trappable error, e.g. if ".^compose"
-has been called on an NQP object.
+for problems and throwing a trappable error, .e.g. if the methods
+are being called on an NQP object.
 
 See this discussion by Brandon Allerby:
 

@@ -11,7 +11,7 @@ augment class Any {
   method hiccup {
     return "hic!";
   }
-    Recomposer.recompose_core;
+    Augur.recompose_core;
 }
 
 # say @array.hiccup; # hic!
