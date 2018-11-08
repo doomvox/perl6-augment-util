@@ -15,7 +15,7 @@ SYNOPSIS
         method hiccup {
             say "hic!";
         }
-        Recomposer.recompose_core;
+        Augur.recompose_core;
     }
 
     @array.hiccup; # hic!
@@ -23,13 +23,17 @@ SYNOPSIS
 DESCRIPTION
 ===========
 
-This module makes the `Recomposer` class available, with the method `recompose_core` which forcibly runs the ".^compose" method on everything defined in CORE.
+This module makes the `Augur` class available, which provides methods useful for working with the perl6 "augment" feature:
+
+  * `recompose_core` runs the ".^compose" method on everything defined in CORE.
+
+  * `inside_repl` checks if runnning inside the repl
 
 This covers for a known bug in the use of augment: you can use it to add methods to a class, and they *should* be automatically visible in all child classes, but often are not because the augment can't effect things that were created before you made the change... unless you run the ".^compose" method on them, to force a re-initialization.
 
 Someday the need for `recompose_core` will probably go away once this bug has been addressed, but for now it's a useable workaround.
 
-Another issue with augment, though is that it's use is strongly discouraged because of potential conflicts. Don't do it unless you know what you're doing, and even then...
+Another issue with augment is that it's use is strongly discouraged because it's the kind of thing that works fine once, but when it's being used a lot by many people there are potential conflicts. Don't do it unless you know what you're doing, and even then...
 
 MOTIVATION
 ==========
@@ -51,7 +55,7 @@ The Mystery Line does a gist call and does nothing with the response:
 
     my $nada = $type_object.gist;
 
-Presumbably what's going on is the code for ".gist" is better excercised than ".^compose", and does a better job of checking for problems and throwing a trappable error, e.g. if ".^compose" has been called on an NQP object.
+Presumbably what's going on is the code for ".gist" is better excercised than ".^compose", and does a better job of checking for problems and throwing a trappable error, .e.g. if the methods are being called on an NQP object.
 
 See this discussion by Brandon Allerby:
 
